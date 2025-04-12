@@ -15,6 +15,9 @@ app.use("/api/test", testUserRoutes);
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
+const aiRoutes = require("./routes/ai"); // <-- Add this line
+app.use("/api/ai", aiRoutes); // <-- Use the AI routes
+
 
 
 connectDB(); // ✅ This runs the connection
