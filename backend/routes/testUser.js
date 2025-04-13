@@ -1,8 +1,8 @@
+
 const express = require("express");
 const User = require("../models/User");
 const router = express.Router();
-const Contribution = require("../models/Contribution"); // make sure you have this
-
+const protect = require("../middleware/auth");
 
 // Test route: create a user
 router.post("/create-user", async (req, res) => {
@@ -17,10 +17,7 @@ router.post("/create-user", async (req, res) => {
   }
 });
 
-module.exports = router;
-
-
-
+// Your other route
 router.post("/contributions/add", protect, async (req, res) => {
   try {
     const { weekly_income, weekly_expense } = req.body;
@@ -40,4 +37,6 @@ router.post("/contributions/add", protect, async (req, res) => {
     res.status(500).json({ message: "Error saving contribution", error: err.message });
   }
 });
+
+module.exports = router; // ✅ Ensure this is at the end
 
