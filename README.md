@@ -28,7 +28,6 @@ They move jobs frequently, often live paycheck-to-paycheck, and are left out of 
 | **🔮 Forecast Tool** | Set goals or daily savings — see projected results over time |
 | **🎯 Filters** | Short-term, medium-term, and long-term planning modes |
 | **👤 User Profile** | View your account, login details, and savings identity |
-| **🔗 Blockchain Ledger (Optional)** | Tamper-proof savings tracking for transparency and portability |
 
 ---
 
