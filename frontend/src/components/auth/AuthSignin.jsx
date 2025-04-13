@@ -11,9 +11,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { X } from "lucide-react"; // Import close icon
+import { X } from "lucide-react";
 
-export function LoginFormPopup({ className, isOpen, onClose, ...props }) {
+export function SignUpFormPopup({ className, isOpen, onClose, onOpenLogin, ...props }) {
   // Prevent rendering if not open
   if (!isOpen) return null;
 
@@ -23,7 +23,7 @@ export function LoginFormPopup({ className, isOpen, onClose, ...props }) {
         "fixed inset-0 z-50 flex items-center justify-center bg-black/50 dark:bg-black/70",
         className
       )}
-      onClick={onClose} // Optional: Close when clicking backdrop
+      onClick={onClose} // Close when clicking backdrop
       {...props}
     >
       <Card
@@ -39,14 +39,26 @@ export function LoginFormPopup({ className, isOpen, onClose, ...props }) {
           <X className="h-5 w-5" />
         </Button>
         <CardHeader>
-          <CardTitle className="text-2xl dark:text-gray-100">Login</CardTitle>
+          <CardTitle className="text-2xl dark:text-gray-100">Sign Up</CardTitle>
           <CardDescription className="dark:text-gray-400">
-            Enter your email below to login to your account
+            Create your account by filling in the details below
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form>
             <div className="flex flex-col gap-6">
+              <div className="grid gap-2">
+                <Label htmlFor="name" className="dark:text-gray-200">
+                  Full Name
+                </Label>
+                <Input
+                  id="name"
+                  type="text"
+                  placeholder="John Doe"
+                  required
+                  className="dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+                />
+              </div>
               <div className="grid gap-2">
                 <Label htmlFor="email" className="dark:text-gray-200">
                   Email
@@ -60,20 +72,24 @@ export function LoginFormPopup({ className, isOpen, onClose, ...props }) {
                 />
               </div>
               <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password" className="dark:text-gray-200">
-                    Password
-                  </Label>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline dark:text-gray-400"
-                  >
-                    Forgot your password?
-                  </a>
-                </div>
+                <Label htmlFor="phone" className="dark:text-gray-200">
+                  Phone Number
+                </Label>
                 <Input
-                  id="password"
-                  type="password"
+                  id="phone"
+                  type="tel"
+                  placeholder="+1 (555) 123-4567"
+                  required
+                  className="dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="dob" className="dark:text-gray-200">
+                  Date of Birth
+                </Label>
+                <Input
+                  id="dob"
+                  type="date"
                   required
                   className="dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
                 />
@@ -82,23 +98,22 @@ export function LoginFormPopup({ className, isOpen, onClose, ...props }) {
                 type="submit"
                 className="w-full dark:bg-blue-600 dark:hover:bg-blue-700 dark:text-gray-100"
               >
-                Login
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
-              >
-                Login with Google
+                Sign Up
               </Button>
             </div>
             <div className="mt-4 text-center text-sm dark:text-gray-400">
-              Don&apos;t have an account?{" "}
-              <a
-                href="#"
+              Already have an account?{" "}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onClose();
+                  onOpenLogin();
+                }}
                 className="underline underline-offset-4 dark:text-gray-300"
               >
-                Sign up
-              </a>
+                Log in
+              </button>
             </div>
           </form>
         </CardContent>

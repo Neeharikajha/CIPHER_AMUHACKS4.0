@@ -91,16 +91,6 @@ export default function ProfileView({ theme, toggleTheme }) {
               )}
             </Button>
           </div>
-          <div className="flex items-center justify-between p-4 bg-muted rounded-md dark:bg-gray-700">
-            <span className="text-sm font-medium dark:text-gray-200">Notification Preferences</span>
-            <Button
-              variant="outline"
-              size="sm"
-              className="dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-600"
-            >
-              Manage
-            </Button>
-          </div>
         </div>
 
         <div className="flex justify-end gap-2">

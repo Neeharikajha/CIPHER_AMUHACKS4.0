@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   BarChart3,
   DollarSign,
@@ -26,13 +26,13 @@ import DashboardContent from "./Dashboard";
 import AnalyticsView from "@/components/dashboard/AnalyticsView";
 import ForecastsView from "@/components/dashboard/ForecastsView";
 import ProfileView from "@/components/dashboard/ProfileView";
-import { LoginFormPopup } from "@/components/dashboard/AuthLogin"; // Import the popup
+import { AuthContainer } from "@/components/auth/AuthContainer"; // Import the AuthContainer
 
 export function DashboardLayout() {
   const [activeView, setActiveView] = useState("dashboard");
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [theme, setTheme] = useState("light");
-  const [isLoginOpen, setIsLoginOpen] = useState(false); // State for popup
+  const authContainerRef = useRef(null);
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
@@ -48,12 +48,8 @@ export function DashboardLayout() {
   };
 
   const handleLogout = () => {
-    // Show login popup instead of redirecting
-    setIsLoginOpen(true);
-  };
-
-  const closeLogin = () => {
-    setIsLoginOpen(false);
+    // Open login form when user logs out
+    authContainerRef.current?.openLogin();
   };
 
   useEffect(() => {
@@ -184,8 +180,8 @@ export function DashboardLayout() {
           {renderDashboardContent()}
         </main>
 
-        {/* Login Popup */}
-        <LoginFormPopup isOpen={isLoginOpen} onClose={closeLogin} />
+        {/* Auth Container - using ref to access methods */}
+        <AuthContainer ref={authContainerRef} />
       </div>
     </div>
   );
