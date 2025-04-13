@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+NEXT_PUBLIC_RAZORPAY_KEY= rzp_test_uJKenl57jZOFVN
