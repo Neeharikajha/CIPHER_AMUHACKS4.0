@@ -8,11 +8,11 @@ With small, automatic savings triggered by income detection via UPI/SMS, Gullak 
 
 ## 🌟 Why Gullak?
 
-India has over **400 million informal workers**, most of whom have **no retirement security**.
+India has over 400 million informal workers, most of whom have no retirement security.
 
 They move jobs frequently, often live paycheck-to-paycheck, and are left out of structured pension schemes.
 
-**Gullak empowers them** to save in tiny, flexible amounts whenever they earn — building a portable, blockchain-tracked savings identity they can carry wherever life takes them.
+Gullak empowers them to save in tiny, flexible amounts whenever they earn — building a portable savings identity they can carry wherever life takes them.
 
 ---
 
