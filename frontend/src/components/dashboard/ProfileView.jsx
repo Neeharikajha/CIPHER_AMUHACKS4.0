@@ -67,7 +67,6 @@ export default function ProfileView({ theme, toggleTheme }) {
             </div>
           </div>
         </div>
-
         <div className="space-y-4">
           <h3 className="text-lg font-medium dark:text-gray-100">Preferences</h3>
           <div className="flex items-center justify-between p-4 bg-muted rounded-md dark:bg-gray-700">
@@ -92,7 +91,6 @@ export default function ProfileView({ theme, toggleTheme }) {
             </Button>
           </div>
         </div>
-
         <div className="flex justify-end gap-2">
           <Button
             variant="outline"

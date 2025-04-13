@@ -51,7 +51,6 @@ export default function AnalyticsView() {
           </CardContent>
         </Card>
       </div>
-
       <Card>
         <CardHeader>
           <CardTitle>Savings Analytics</CardTitle>
@@ -61,7 +60,6 @@ export default function AnalyticsView() {
           <SavingsSummary />
         </CardContent>
       </Card>
-
       <Card>
         <CardHeader>
           <CardTitle>Financial Health Score</CardTitle>
