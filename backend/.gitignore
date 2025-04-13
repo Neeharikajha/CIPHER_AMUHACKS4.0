@@ -1,2 +1,2 @@
 PORT=5000
-MONGO_URI=mongodb+srv://neeharikajha05:yLrTua3yTMF0jX99@pension.hqguer3.mongodb.net/pensionPlus?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://neeharikajha05:yLrTua3yTMF0jX99@pension.hqguer3.mongodb.net/pensionPlus?retryWrites=true&w=majority0
