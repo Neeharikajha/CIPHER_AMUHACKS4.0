@@ -82,3 +82,49 @@ Gullak empowers them to save in tiny, flexible amounts whenever they earn — bu
 ```bash
 git clone https://github.com/yourusername/gullak.git
 cd gullak
+
+. Install Dependencies
+📦 Root Monorepo
+
+bash
+Copy
+Edit
+npm install
+🤖 AI Service (Python FastAPI)
+
+bash
+Copy
+Edit
+cd ai_service
+pip install -r requirements.txt
+🚀 Running the App
+Open 3 terminals (or use VSCode multi-terminal):
+
+▶️ Frontend (Next.js)
+
+bash
+Copy
+Edit
+cd frontend
+npm run dev
+Runs at: http://localhost:3000
+
+▶️ Backend (Express + MongoDB)
+
+bash
+Copy
+Edit
+cd backend
+npm run start
+Runs at: http://localhost:5000
+
+Make sure MongoDB is running locally or configure your connection string in backend/.env.
+
+▶️ AI Service (FastAPI)
+
+bash
+Copy
+Edit
+cd ai_service
+python -m uvicorn main:app --reload
+Runs at: http://localhost:8000
