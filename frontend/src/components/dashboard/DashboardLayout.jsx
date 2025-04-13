@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react";
 import {
   BarChart3,
   DollarSign,
@@ -11,9 +11,9 @@ import {
   User,
   ChevronDown,
   Menu,
-} from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+} from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,156 +21,152 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import DashboardContent from "./Dashboard"
+} from "@/components/ui/dropdown-menu";
+import DashboardContent from "./Dashboard";
+import AnalyticsView from "@/components/dashboard/AnalyticsView";
+import ForecastsView from "@/components/dashboard/ForecastsView";
+import ProfileView from "@/components/dashboard/ProfileView";
+import { LoginFormPopup } from "@/components/dashboard/AuthLogin"; // Import the popup
 
 export function DashboardLayout() {
-  const [activeView, setActiveView] = useState("dashboard")
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [activeView, setActiveView] = useState("dashboard");
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [theme, setTheme] = useState("light");
+  const [isLoginOpen, setIsLoginOpen] = useState(false); // State for popup
 
-  const toggleSidebar = () => setSidebarOpen(!sidebarOpen)
+  const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
+  const handleLogout = () => {
+    // Show login popup instead of redirecting
+    setIsLoginOpen(true);
+  };
+
+  const closeLogin = () => {
+    setIsLoginOpen(false);
+  };
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
 
   const menuItems = [
     { title: "Dashboard", icon: Home, value: "dashboard" },
     { title: "Analytics", icon: BarChart3, value: "analytics" },
     { title: "Forecasts", icon: LineChart, value: "forecasts" },
-    { title: "Settings", icon: Settings, value: "settings" },
-  ]
+    { title: "Profile", icon: Settings, value: "profile" },
+  ];
 
   const renderDashboardContent = () => {
     switch (activeView) {
       case "dashboard":
-        return <DashboardContent />
+        return <DashboardContent />;
       case "analytics":
-        return (
-          <Card>
-            <CardHeader>
-              <CardTitle>Analytics Dashboard</CardTitle>
-              <CardDescription>
-                Detailed analysis of your financial data
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex h-[300px] items-center justify-center rounded-md border border-dashed">
-                <div className="flex flex-col items-center gap-2 text-center">
-                  <BarChart3 className="h-10 w-10 text-muted-foreground" />
-                  <h3 className="text-lg font-semibold">Analytics View</h3>
-                  <p className="text-sm text-muted-foreground max-w-md">
-                    This section contains detailed charts and analytics about your financial data, spending patterns, and investment performance.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        )
+        return <AnalyticsView />;
       case "forecasts":
-        return (
-          <Card>
-            <CardHeader>
-              <CardTitle>Financial Forecasts</CardTitle>
-              <CardDescription>
-                AI-powered predictions for your financial future
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex h-[300px] items-center justify-center rounded-md border border-dashed">
-                <div className="flex flex-col items-center gap-2 text-center">
-                  <LineChart className="h-10 w-10 text-muted-foreground" />
-                  <h3 className="text-lg font-semibold">Forecasts View</h3>
-                  <p className="text-sm text-muted-foreground max-w-md">
-                    This section contains AI-generated forecasts about your future savings, investment growth, and financial milestones based on your current financial behavior.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        )
-      case "settings":
-        return (
-          <Card>
-            <CardHeader>
-              <CardTitle>Settings</CardTitle>
-              <CardDescription>Manage your account preferences</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex h-[3px] items-center justify-center rounded-md border border-dashed">
-                <div className="flex flex-col items-center gap-2 text-center">
-                  <Settings className="h-10 w-10 text-muted-foreground" />
-                  <h3 className="text-lg font-semibold">Settings View</h3>
-                  <p className="text-sm text-muted-foreground max-w-md">
-                    Manage your account settings, preferences, and notification options.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        )
-      default:
-        return <div>Select a view</div>
+        return <ForecastsView />;
+      case "profile":
+        return <ProfileView theme={theme} toggleTheme={toggleTheme} />;
     }
-  }
+  };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen w-full dark:bg-gray-900">
       {/* Sidebar */}
       <aside
         className={`${
           sidebarOpen ? "w-64" : "w-16"
-        } transition-all duration-300 border-r bg-muted p-4 overflow-hidden`}
+        } transition-all duration-300 border-r bg-muted p-4 flex-shrink-0 dark:bg-gray-800 dark:border-gray-700`}
       >
         <div className="flex items-center gap-2 mb-8">
-          <DollarSign className="h-6 w-6 text-primary" />
-          {sidebarOpen && <span className="text-xl font-bold">FinTrack</span>}
+          <DollarSign className="h-6 w-6 text-primary dark:text-blue-400" />
+          {sidebarOpen && (
+            <span className="text-xl font-bold dark:text-gray-100">FinTrack</span>
+          )}
         </div>
         <nav className="space-y-2">
           {menuItems.map((item) => (
             <div
               key={item.value}
               onClick={() => setActiveView(item.value)}
-              className={`flex items-center p-2 rounded-md cursor-pointer ${
-                activeView === item.value ? "bg-primary text-white" : ""
+              className={`flex items-center p-2 rounded-md cursor-pointer transition ${
+                activeView === item.value
+                  ? "bg-primary text-white dark:bg-blue-600 dark:text-gray-100"
+                  : "dark:text-gray-300 dark:hover:bg-gray-700"
               }`}
             >
-              <item.icon className="h-5 w-5 mr-2" />
-              {sidebarOpen && <span>{item.title}</span>}
+              <item.icon className="h-5 w-5" />
+              {sidebarOpen && <span className="ml-2">{item.title}</span>}
             </div>
           ))}
         </nav>
       </aside>
 
       {/* Content */}
-      <div className="flex-1 flex flex-col">
-        <header className="flex justify-between items-center p-4 border-b">
+      <div className="flex-1 flex flex-col min-h-screen">
+        <header className="flex justify-between items-center p-4 border-b flex-shrink-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" onClick={toggleSidebar}>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleSidebar}
+              className="dark:text-gray-300 dark:hover:bg-gray-700"
+            >
               <Menu className="h-5 w-5" />
             </Button>
-            <h1 className="text-xl font-semibold">
-              {menuItems.find((item) => item.value === activeView)?.title || "Dashboard"}
+            <h1 className="text-xl font-semibold dark:text-gray-100">
+              {menuItems.find((item) => item.value === activeView)?.title ||
+                "Dashboard"}
             </h1>
           </div>
           <div className="flex items-center gap-2">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="gap-1">
+                <Button
+                  variant="outline"
+                  className="gap-1 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-700"
+                >
                   <span>John Doe</span>
                   <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
+              <DropdownMenuContent
+                align="end"
+                className="dark:bg-gray-800 dark:border-gray-700"
+              >
+                <DropdownMenuLabel className="dark:text-gray-200">
+                  My Account
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator className="dark:bg-gray-700" />
+                <DropdownMenuItem className="dark:text-gray-200 dark:hover:bg-gray-700">
                   <User className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem className="dark:text-gray-200 dark:hover:bg-gray-700">
                   <Settings className="mr-2 h-4 w-4" />
                   <span>Settings</span>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
+                <DropdownMenuSeparator className="dark:bg-gray-700" />
+                <DropdownMenuItem
+                  onClick={handleLogout}
+                  className="dark:text-gray-200 dark:hover:bg-gray-700"
+                >
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Log out</span>
                 </DropdownMenuItem>
@@ -178,12 +174,19 @@ export function DashboardLayout() {
             </DropdownMenu>
             <Avatar className="h-8 w-8">
               <AvatarImage src="/placeholder.svg?height=32&width=32" alt="User" />
-              <AvatarFallback>JD</AvatarFallback>
+              <AvatarFallback className="dark:bg-gray-600 dark:text-gray-100">
+                JD
+              </AvatarFallback>
             </Avatar>
           </div>
         </header>
-        <main className="flex-1 p-6">{renderDashboardContent()}</main>
+        <main className="flex-1 p-6 w-full dark:bg-gray-900">
+          {renderDashboardContent()}
+        </main>
+
+        {/* Login Popup */}
+        <LoginFormPopup isOpen={isLoginOpen} onClose={closeLogin} />
       </div>
     </div>
-  )
+  );
 }

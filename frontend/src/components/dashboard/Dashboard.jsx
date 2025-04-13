@@ -41,126 +41,133 @@ export default function DashboardContent() {
 
       <Tabs defaultValue="overview" className="space-y-1">
         <TabsContent value="overview" className="space-y-6">
-          {/* Summary Cards */}
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {/* Total Balance */}
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Total Balance</CardTitle>
-                <DollarSign className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">$12,546.00</div>
-                <p className="text-xs text-muted-foreground">
-                  <span className="text-emerald-500 flex items-center">
-                    <ArrowUp className="mr-1 h-3 w-3" />
-                    +2.5%
-                  </span>{" "}
-                  from last month
-                </p>
-              </CardContent>
-            </Card>
+{/* Summary Cards + Intro Section */}
+<div className="grid gap-4 md:grid-cols-8 lg:grid-cols-8 items-start">
+  {/* Summary Cards */}
+  <div className="col-span-6 grid grid-cols-2 gap-4">
+    {/* Total Balance */}
+    <Card className="h-full">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">Total Balance</CardTitle>
+        <DollarSign className="h-4 w-4 text-muted-foreground" />
+      </CardHeader>
+      <CardContent>
+        <div className="text-2xl font-bold">$12,546.00</div>
+        <p className="text-xs text-muted-foreground">
+          <span className="text-emerald-500 flex items-center">
+            <ArrowUp className="mr-1 h-3 w-3" />
+            +2.5%
+          </span>{" "}
+          from last month
+        </p>
+      </CardContent>
+    </Card>
 
-            {/* Total Savings */}
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Total Savings</CardTitle>
-                <PiggyBank className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">$4,935.00</div>
-                <p className="text-xs text-muted-foreground">
-                  <span className="text-emerald-500 flex items-center">
-                    <ArrowUp className="mr-1 h-3 w-3" />
-                    +18.2%
-                  </span>{" "}
-                  from last month
-                </p>
-              </CardContent>
-            </Card>
+    {/* Total Savings */}
+    <Card className="h-full">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">Total Savings</CardTitle>
+        <PiggyBank className="h-4 w-4 text-muted-foreground" />
+      </CardHeader>
+      <CardContent>
+        <div className="text-2xl font-bold">$4,935.00</div>
+        <p className="text-xs text-muted-foreground">
+          <span className="text-emerald-500 flex items-center">
+            <ArrowUp className="mr-1 h-3 w-3" />
+            +18.2%
+          </span>{" "}
+          from last month
+        </p>
+      </CardContent>
+    </Card>
 
-            {/* Monthly Expenses */}
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Monthly Expenses</CardTitle>
-                <CreditCard className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">$2,450.00</div>
-                <p className="text-xs text-muted-foreground">
-                  <span className="text-rose-500 flex items-center">
-                    <ArrowDown className="mr-1 h-3 w-3" />
-                    -4.1%
-                  </span>{" "}
-                  from last month
-                </p>
-              </CardContent>
-            </Card>
+    {/* Monthly Expenses */}
+    <Card className="h-full">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">Monthly Expenses</CardTitle>
+        <CreditCard className="h-4 w-4 text-muted-foreground" />
+      </CardHeader>
+      <CardContent>
+        <div className="text-2xl font-bold">$2,450.00</div>
+        <p className="text-xs text-muted-foreground">
+          <span className="text-rose-500 flex items-center">
+            <ArrowDown className="mr-1 h-3 w-3" />
+            -4.1%
+          </span>{" "}
+          from last month
+        </p>
+      </CardContent>
+    </Card>
 
-            {/* Savings Rate */}
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Savings Rate</CardTitle>
-                <TrendingUp className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">24.5%</div>
-                <p className="text-xs text-muted-foreground">
-                  <span className="text-emerald-500 flex items-center">
-                    <ArrowUp className="mr-1 h-3 w-3" />
-                    +5.2%
-                  </span>{" "}
-                  from last month
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+    {/* Savings Rate */}
+    <Card className="h-full">
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+        <CardTitle className="text-sm font-medium">Savings Rate</CardTitle>
+        <TrendingUp className="h-4 w-4 text-muted-foreground" />
+      </CardHeader>
+      <CardContent>
+        <div className="text-2xl font-bold">24.5%</div>
+        <p className="text-xs text-muted-foreground">
+          <span className="text-emerald-500 flex items-center">
+            <ArrowUp className="mr-1 h-3 w-3" />
+            +5.2%
+          </span>{" "}
+          from last month
+        </p>
+      </CardContent>
+    </Card>
+  </div>
+
+  {/* Text + Button Placeholder (matches height of 2 cards) */}
+  <div className="col-span-2 row-span-2 flex flex-col justify-center gap-4 p-6 bg-muted rounded-md h-full">
+    <h2 className="text-xl font-semibold">Kickstart Your Savings</h2>
+    <p className="text-sm text-muted-foreground">
+      Begin your savings journey today. Track your goals and build financial freedom.
+    </p>
+    <button className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary/90 transition">
+      Start Saving
+    </button>
+  </div>
+</div>
 
           {/* Charts Section */}
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="lg:col-span-4">
-              <CardHeader>
-                <CardTitle>Savings Growth</CardTitle>
-                <CardDescription>Your savings growth over the past 6 months</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <SavingsChart />
-              </CardContent>
-            </Card>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-8">
+  <Card className="lg:col-span-4">
+    <CardHeader>
+      <CardTitle>Savings Summary</CardTitle>
+      <CardDescription>Your savings growth over the past 6 months</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <SavingsChart />
+    </CardContent>
+  </Card>
 
-            <Card className="lg:col-span-3">
-              <CardHeader>
-                <CardTitle>Savings Summary</CardTitle>
-                <CardDescription>Breakdown of your savings by category</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <SavingsSummary />
-              </CardContent>
-            </Card>
-          </div>
+  <Card className="lg:col-span-4">
+    <CardHeader>
+      <CardTitle>Savings Forecast</CardTitle>
+      <CardDescription>AI-powered prediction of your future savings</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <ForecastCard />
+    </CardContent>
+  </Card>
+</div>
+
+          
 
           {/* Transactions + Forecast */}
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="lg:col-span-4">
-              <CardHeader>
-                <CardTitle>Recent Transactions</CardTitle>
-                <CardDescription>Your most recent financial activities</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <RecentTransactions />
-              </CardContent>
-            </Card>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-8">
+  <Card className="w-full h-full col-span-full">
+    <CardHeader>
+      <CardTitle>Recent Transactions</CardTitle>
+      <CardDescription>Your most recent financial activities</CardDescription>
+    </CardHeader>
+    <CardContent>
+      <RecentTransactions />
+    </CardContent>
+  </Card>
+</div>
 
-            <Card className="lg:col-span-3">
-              <CardHeader>
-                <CardTitle>Savings Forecast</CardTitle>
-                <CardDescription>AI-powered prediction of your future savings</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ForecastCard />
-              </CardContent>
-            </Card>
-          </div>
         </TabsContent>
       </Tabs>
 
