@@ -34,13 +34,16 @@ They move jobs frequently, often live paycheck-to-paycheck, and are left out of 
 ## 🖼️ Screenshots
 
 ### 🔐 Login Page
-![WhatsApp Image 2025-04-13 at 22 57 49_18b4d91b](https://github.com/user-attachments/assets/ea1b4317-b5af-48db-82c6-99785a683eee)
+
 
 ### 🔐 Landing Page
-![Landing Page]((https://github.com/user-attachments/assets/8beb7efe-06ab-48a2-891a-7db765f934fd)
+![WhatsApp Image 2025-04-13 at 22 57 49_18b4d91b](https://github.com/user-attachments/assets/ea1b4317-b5af-48db-82c6-99785a683eee)
+
+### Features :
+![features](https://github.com/user-attachments/assets/d58c9a71-47ef-43d9-81ae-206a09034965)
 
 ### 🧮 Dashboard View
-![Dashboard](./screenshots/dashboard.png)
+![dashboard](https://github.com/user-attachments/assets/4d31f5a7-293c-4812-ac07-e2ad8c77f929)
 
 ### 📈 Analytics & Forecast
 ![Analytics](./screenshots/analytics.png)
