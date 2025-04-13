@@ -43,13 +43,14 @@ They move jobs frequently, often live paycheck-to-paycheck, and are left out of 
 ![features](https://github.com/user-attachments/assets/d58c9a71-47ef-43d9-81ae-206a09034965)
 
 ### 🧮 Dashboard View
-![dashboard](https://github.com/user-attachments/assets/4d31f5a7-293c-4812-ac07-e2ad8c77f929)
+![image](https://github.com/user-attachments/assets/b1d728af-fb91-4e1f-b6a9-d6d53c3c0d34)
 
 ### 📈 Analytics & Forecast
-![Analytics](./screenshots/analytics.png)
+![image](https://github.com/user-attachments/assets/da5bbd95-8726-45de-bfbe-3806cc3d2a29)
+![image](https://github.com/user-attachments/assets/8ac66c19-fc01-44c6-ab9e-55e36d5597f5)
 
 ### 💸 Razorpay Integration
-![Payment Flow](./screenshots/payment.png)
+![image](https://github.com/user-attachments/assets/1c42e632-aa8c-40a3-bbe0-e45278438b72)
 
 ---
 
