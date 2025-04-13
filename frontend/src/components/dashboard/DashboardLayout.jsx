@@ -65,7 +65,6 @@ export function DashboardLayout() {
   const menuItems = [
     { title: "Dashboard", icon: Home, value: "dashboard" },
     { title: "Analytics", icon: BarChart3, value: "analytics" },
-    { title: "Forecasts", icon: LineChart, value: "forecasts" },
     { title: "Profile", icon: Settings, value: "profile" },
   ];
 
@@ -75,8 +74,6 @@ export function DashboardLayout() {
         return <DashboardContent />;
       case "analytics":
         return <AnalyticsView />;
-      case "forecasts":
-        return <ForecastsView />;
       case "profile":
         return <ProfileView theme={theme} toggleTheme={toggleTheme} />;
     }

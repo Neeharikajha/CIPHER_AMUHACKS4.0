@@ -91,7 +91,7 @@ export default function DashboardContent() {
                   <DollarSign className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">$12,546.00</div>
+                  <div className="text-2xl font-bold">INR 12,546.00</div>
                   <p className="text-xs text-muted-foreground">
                     <span className="text-emerald-500 flex items-center">
                       <ArrowUp className="mr-1 h-3 w-3" />
@@ -109,7 +109,7 @@ export default function DashboardContent() {
                   <PiggyBank className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">$4,935.00</div>
+                  <div className="text-2xl font-bold">INR 4,935.00</div>
                   <p className="text-xs text-muted-foreground">
                     <span className="text-emerald-500 flex items-center">
                       <ArrowUp className="mr-1 h-3 w-3" />
@@ -123,11 +123,11 @@ export default function DashboardContent() {
               {/* Monthly Expenses */}
               <Card className="h-full">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Monthly Expenses</CardTitle>
+                  <CardTitle className="text-sm font-medium">Monthly Savings</CardTitle>
                   <CreditCard className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">$2,450.00</div>
+                  <div className="text-2xl font-bold">INR 2,450.00</div>
                   <p className="text-xs text-muted-foreground">
                     <span className="text-rose-500 flex items-center">
                       <ArrowDown className="mr-1 h-3 w-3" />

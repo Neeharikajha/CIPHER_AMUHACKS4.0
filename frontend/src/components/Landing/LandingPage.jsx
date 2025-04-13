@@ -13,33 +13,24 @@ import {
   Zap,
 } from "lucide-react";
 import { AuthContainer } from "../auth/AuthContainer";
-
+import { MoveRight } from "lucide-react";
 const Hero4 = ({ onSignUp }) => (
-  <div className="w-full pt-0 pb-8 md:pb-12 lg:pb-16">
-    <div className="container mx-auto pl-8 md:pl-12 lg:pl-16 pr-8 md:pr-12 lg:pr-16">
-      <div className="grid grid-cols-1 gap-8 items-center md:grid-cols-2">
-        <div className="flex gap-4 flex-col">
-          <div className="flex gap-4 flex-col">
-            <h1 className="text-5xl md:text-7xl max-w-lg tracking-tighter text-left font-regular">
-              Take charge of your finances!
-            </h1>
-            <p className="text-xl leading-relaxed tracking-tight text-muted-foreground max-w-md text-left">
-              Managing money shouldn’t be a hassle. Ditch complicated spreadsheets and outdated tools. FinTrack simplifies budgeting, tracks savings, and empowers you to achieve your financial goals effortlessly.
-            </p>
-          </div>
-          <div className="flex flex-row gap-4">
-            <Button size="lg" className="gap-4" variant="outline" asChild>
-              <a href="#features">About Us</a>
-            </Button>
-            <Button size="lg" className="gap-4" onClick={onSignUp}>
-              Sign up here
-            </Button>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 gap-8">
-          <div className="bg-muted rounded-md aspect-square"></div>
-          <div className="bg-muted rounded-md row-span-2"></div>
-          <div className="bg-muted rounded-md aspect-square"></div>
+  <div className="w-full">
+    <div className="container mx-auto">
+      <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col text-center">
+        <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter font-regular">
+          Take charge of your finances!
+        </h1>
+        <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl">
+          Managing money shouldn’t be a hassle. Ditch complicated spreadsheets and outdated tools. Gullak simplifies budgeting, tracks savings, and empowers you to achieve your financial goals effortlessly.
+        </p>
+        <div className="flex flex-row gap-4">
+          <Button size="lg" className="gap-4" variant="outline" asChild>
+            <a href="#features">About Us</a>
+          </Button>
+          <Button size="lg" className="gap-4" onClick={onSignUp}>
+            Sign up here <MoveRight className="w-4 h-4" />
+          </Button>
         </div>
       </div>
     </div>
@@ -54,7 +45,7 @@ export default function LandingPage() {
   };
 
   const handleSignUp = () => {
-    authContainerRef.current?.openSignUp(); // ✅ Correct method name
+    authContainerRef.current?.openSignUp();
   };
 
   const handleGetStarted = () => {
@@ -67,12 +58,11 @@ export default function LandingPage() {
         <div className="container flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
             <PiggyBank className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold">FinTrack</span>
+            <span className="text-xl font-bold">Gullak</span>
           </div>
           <nav className="hidden gap-8 md:flex">
             <a href="#features" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Features</a>
             <a href="#benefits" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Benefits</a>
-            <a href="#testimonials" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Testimonials</a>
           </nav>
           <div className="flex items-center gap-6">
             <button onClick={handleLogin} className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Login</button>
@@ -81,6 +71,34 @@ export default function LandingPage() {
       </header>
 
       <main className="flex-1">
+      {/* Background visual layer */}
+<div className="absolute inset-0 -z-10 overflow-hidden">
+  {/* Dotted grid */}
+  <svg
+  className="absolute inset-0 w-full h-full -z-10 opacity-30"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <defs>
+    <pattern
+      id="dot-pattern"
+      x="0"
+      y="0"
+      width="24"
+      height="24"
+      patternUnits="userSpaceOnUse"
+    >
+      <circle cx="2" cy="2" r="2" fill="#c2c2c2" />
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#dot-pattern)" />
+</svg>
+
+
+  {/* Gradient blobs */}
+  <div className="absolute top-[-200px] left-[-100px] w-[600px] h-[600px] bg-blue-500 opacity-30 rounded-full blur-3xl" />
+  <div className="absolute bottom-[-200px] right-[-100px] w-[500px] h-[500px] bg-blue-400 opacity-20 rounded-full blur-2xl" />
+</div>
+
         <Hero4 onSignUp={handleSignUp} />
 
         <section id="features" className="pt-8 md:pt-12 lg:pt-16 pb-20 md:pb-28">
@@ -114,7 +132,7 @@ export default function LandingPage() {
         <section id="benefits" className="bg-muted/30 py-20 md:py-28">
           <div className="container px-4 sm:px-6 lg:px-8">
             <div className="mx-auto mb-16 max-w-3xl text-center">
-              <h2 className="mb-6 text-3xl font-bold md:text-4xl">Why Choose FinTrack?</h2>
+              <h2 className="mb-6 text-3xl font-bold md:text-4xl">Why Choose Gullak?</h2>
               <p className="text-lg text-muted-foreground">Our platform is designed to help you achieve financial freedom with ease.</p>
             </div>
 
@@ -144,7 +162,7 @@ export default function LandingPage() {
                   </div>
                   <h3 className="text-xl font-bold">Save More Money</h3>
                 </div>
-                <p className="mb-6 text-muted-foreground">Our users save an average of 15% more money after using FinTrack for just three months.</p>
+                <p className="mb-6 text-muted-foreground">Our users save an average of 15% more money after using Gullak for just three months.</p>
                 <ul className="space-y-3">
                   {["Automated savings recommendations", "Expense reduction insights", "Goal-based saving plans"].map((item, i) => (
                     <li key={i} className="flex items-center gap-3">
@@ -162,7 +180,7 @@ export default function LandingPage() {
 
       <footer className="border-t bg-muted/30 py-16">
         <p className="text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} FinTrack. All rights reserved.
+          © {new Date().getFullYear()} Gullak. All rights reserved.
         </p>
       </footer>
 
