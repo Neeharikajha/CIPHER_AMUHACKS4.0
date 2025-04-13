@@ -14,7 +14,6 @@ import { Label } from "@/components/ui/label";
 import { X } from "lucide-react";
 
 export function SignUpFormPopup({ className, isOpen, onClose, onOpenLogin, ...props }) {
-  // Prevent rendering if not open
   if (!isOpen) return null;
 
   return (
@@ -23,12 +22,12 @@ export function SignUpFormPopup({ className, isOpen, onClose, onOpenLogin, ...pr
         "fixed inset-0 z-50 flex items-center justify-center bg-black/50 dark:bg-black/70",
         className
       )}
-      onClick={onClose} // Close when clicking backdrop
+      onClick={onClose}
       {...props}
     >
       <Card
         className="relative w-full max-w-md mx-4 dark:bg-gray-800 dark:border-gray-700"
-        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside card
+        onClick={(e) => e.stopPropagation()}
       >
         <Button
           variant="ghost"
@@ -67,6 +66,18 @@ export function SignUpFormPopup({ className, isOpen, onClose, onOpenLogin, ...pr
                   id="email"
                   type="email"
                   placeholder="m@example.com"
+                  required
+                  className="dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
+                />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="password" className="dark:text-gray-200">
+                  Set Password
+                </Label>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="••••••••"
                   required
                   className="dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200"
                 />

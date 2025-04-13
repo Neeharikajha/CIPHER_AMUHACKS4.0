@@ -366,7 +366,7 @@ export default function LandingPage() {
       </footer>
 
       {/* Login Popup */}
-      <LoginFormPopup isOpen={isLoginOpen} onClose={closeLogin} />
+      <AuthContainer ref={authContainerRef} />
     </div>
   );
 }
