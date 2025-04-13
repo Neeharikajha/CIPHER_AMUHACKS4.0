@@ -1,6 +1,9 @@
 {
     "build": {
       "root": "frontend"
+    },
+    "deploy": {
+      "startCommand": "npm start"
     }
   }
   
