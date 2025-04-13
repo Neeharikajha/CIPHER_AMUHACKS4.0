@@ -33,10 +33,11 @@ They move jobs frequently, often live paycheck-to-paycheck, and are left out of 
 
 ## 🖼️ Screenshots
 
-> Replace the image links below with your actual screenshots
-
 ### 🔐 Login Page
 ![Login Page](./screenshots/login.png)
+
+### 🔐 Landing Page
+![Landing Page]((https://github.com/user-attachments/assets/8beb7efe-06ab-48a2-891a-7db765f934fd)
 
 ### 🧮 Dashboard View
 ![Dashboard](./screenshots/dashboard.png)
