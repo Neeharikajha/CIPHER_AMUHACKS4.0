@@ -56,24 +56,28 @@ Gullak empowers them to save in tiny, flexible amounts whenever they earn — bu
 
 ## 🛠 Tech Stack
 
-**Frontend:**
-- [Next.js (App Router)](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Chart.js](https://www.chartjs.org/) / [Recharts](https://recharts.org/)
+### 🖥 Frontend
+- Next.js (App Router)
+- Tailwind CSS
+- Chart.js / Recharts
 - Razorpay JS SDK
 
-**Backend:**
-- [Node.js](https://nodejs.org/)
-- [Express](https://expressjs.com/)
-- [MongoDB + Mongoose](https://mongoosejs.com/)
-- [JWT](https://jwt.io/) Authentication
-- Webhook support for payment verification
+### 🔧 Backend
+- Node.js + Express
+- MongoDB + Mongoose
+- JWT Authentication
+- Razorpay Webhook for payment verification
+
+### 🧠 AI Service
+- Python FastAPI
+- Uvicorn
+- Trained ML/AI model for insights
 
 ---
 
 ## ⚙️ Installation
 
-### 🔧 Clone the Repository
+### 1. Clone the Monorepo
 
 ```bash
 git clone https://github.com/yourusername/gullak.git
