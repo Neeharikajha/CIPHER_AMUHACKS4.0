@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -15,13 +16,22 @@ import {
   TrendingUp,
   Zap,
 } from "lucide-react";
-import { LoginFormPopup } from "@/components/auth/AuthLogin";
+import { AuthContainer } from "../auth/AuthContainer";
 
 export default function LandingPage() {
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const authContainerRef = useRef(null);
 
-  const openLogin = () => setIsLoginOpen(true);
-  const closeLogin = () => setIsLoginOpen(false);
+  const handleLogin = () => {
+    authContainerRef.current?.openLogin();
+  };
+
+  const handleSignUp = () => {
+    authContainerRef.current?.openSignup();
+  };
+
+  const handleGetStarted = () => {
+    authContainerRef.current?.openSignup();
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -54,13 +64,13 @@ export default function LandingPage() {
           </nav>
           <div className="flex items-center gap-6">
             <button
-              onClick={openLogin}
+              onClick={handleLogin}
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               Login
             </button>
-            <Button asChild size="sm" className="px-4">
-              <Link href="/signup">Sign Up Free</Link>
+            <Button onClick={handleSignUp} size="sm" className="px-4">
+              Sign Up Free
             </Button>
           </div>
         </div>
@@ -78,11 +88,9 @@ export default function LandingPage() {
                 Track your savings, monitor expenses, and reach your financial goals with our powerful dashboard.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row">
-                <Button asChild size="lg" className="px-6">
-                  <Link href="/signup">
-                    Get Started Free
-                    <ChevronRight className="ml-2 h-4 w-4" />
-                  </Link>
+                <Button onClick={handleGetStarted} size="lg" className="px-6">
+                  Get Started Free
+                  <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
                 <Button variant="outline" size="lg" asChild className="px-6">
                   <a href="#features">Learn More</a>
@@ -287,8 +295,8 @@ export default function LandingPage() {
               <p className="mb-8 text-lg text-primary-foreground/90">
                 Join thousands of users who are saving more and stressing less with FinTrack.
               </p>
-              <Button asChild size="lg" variant="secondary" className="px-6">
-                <Link href="/signup">Get Started Free</Link>
+              <Button onClick={handleGetStarted} size="lg" variant="secondary" className="px-6">
+                Get Started Free
               </Button>
               <p className="mt-6 text-sm text-primary-foreground/80">No credit card required. Free 14-day trial.</p>
             </div>
@@ -298,75 +306,16 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="border-t bg-muted/30 py-16">
-        <div className="container px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-            <div>
-              <div className="mb-6 flex items-center gap-3">
-                <PiggyBank className="h-6 w-6 text-primary" />
-                <span className="text-xl font-bold">FinTrack</span>
-              </div>
-              <p className="mb-6 text-muted-foreground">
-                The smart way to track your finances and achieve your financial goals.
-              </p>
-              <div className="flex gap-6">
-                {["Twitter", "LinkedIn", "Facebook"].map((social) => (
-                  <a key={social} href="#" className="text-muted-foreground hover:text-foreground">
-                    {social}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="mb-6 text-lg font-bold">Product</h3>
-              <ul className="space-y-3">
-                {["Features", "Pricing", "Testimonials", "FAQ"].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-muted-foreground hover:text-foreground">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="mb-6 text-lg font-bold">Company</h3>
-              <ul className="space-y-3">
-                {["About Us", "Careers", "Blog", "Contact"].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-muted-foreground hover:text-foreground">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="mb-6 text-lg font-bold">Legal</h3>
-              <ul className="space-y-3">
-                {["Terms of Service", "Privacy Policy", "Cookie Policy", "Security"].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-muted-foreground hover:text-foreground">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-12 border-t pt-8 text-center">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-center text-sm text-muted-foreground">
               © {new Date().getFullYear()} FinTrack. All rights reserved.
             </p>
-          </div>
-        </div>
       </footer>
 
-      {/* Login Popup */}
-      <AuthContainer ref={authContainerRef} />
+      {/* Auth Container Component */}
+      <AuthContainer ref={authContainerRef} onAuthSuccess={() => {
+        // Redirect to dashboard or perform other actions after successful auth
+        window.location.href = "/dashboard";
+      }} />
     </div>
   );
 }
